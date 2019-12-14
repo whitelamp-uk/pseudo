@@ -4,7 +4,7 @@
 
 namespace Pseudo;
 
-class User {
+class Auth {
 
     public $hpapi;
 
@@ -22,7 +22,7 @@ class User {
     }
 
     public function secretQuestion ($phoneEnd) {
-        // Get a question to provde the secret answer
+        // Get a question to provide the secret answer
         // Constrained by knowing something about user phone number
         // See \Bab\Agent::secretQuestion()
         return false;

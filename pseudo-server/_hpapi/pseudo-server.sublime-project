@@ -8,7 +8,7 @@
         },
         {
             "path": "../../../_hpapi-config/whitelamp-pseudo",
-            "file_include_patterns": ["pseudo-provider.*"]
+            "file_include_patterns": ["pseudo-server.*"]
         }
     ]
 }

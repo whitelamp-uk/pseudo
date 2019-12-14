@@ -8,6 +8,7 @@
         },
         {
             "path": "../../../_hpapi-config/whitelamp-pseudo",
+            "file_include_patterns": ["pseudo-auth.*"]
         }
     ]
 }

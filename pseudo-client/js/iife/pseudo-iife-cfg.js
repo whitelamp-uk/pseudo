@@ -1,0 +1,1 @@
+../../../../_hpapi-config/whitelamp-pseudo/pseudo-iife-cfg.js

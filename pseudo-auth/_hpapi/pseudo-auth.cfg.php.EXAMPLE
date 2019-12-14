@@ -1,0 +1,9 @@
+<?php
+
+define ( 'PSEUDO_AUTH_PING',  'PING'    );
+
+
+// APPLICATION CLASSES
+require_once HPAPI_DIR_HPAPI.'/whitelamp-pseudo/pseudo-auth/Pseudo/Auth.class.php';
+
+

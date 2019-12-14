@@ -4,7 +4,7 @@
 
 namespace Pseudo;
 
-class Provider {
+class Server {
 
     public $hpapi;
 
