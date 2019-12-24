@@ -2,6 +2,8 @@
 
 /* Copyright 2019 Whitelamp http://www.whitelamp.com/ */
 
+/* This class sits on the pseudo server and receives requests from the client analyst */
+
 namespace Pseudo;
 
 class Auth {

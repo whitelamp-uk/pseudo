@@ -2,6 +2,10 @@
 
 /* Copyright 2019 Whitelamp http://www.whitelamp.com/ */
 
+/* This example class sits on the organisation server and receives requests from the client analyst */
+/* It makes client requests via CLI/cURL to pseudo server class \Pseudo\Admin */
+
+
 namespace Pseudo;
 
 class Server {

@@ -2,5 +2,6 @@
 
 Pseudonymisation system built on hpapi
 
-Example server for data provider
+Example server for organisation providing data
+
 
