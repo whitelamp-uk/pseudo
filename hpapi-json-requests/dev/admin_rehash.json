@@ -1,0 +1,15 @@
+{
+    "email" : "admin@myorg",
+    "password" : "password",
+    "method": {
+        "vendor": "whitelamp-pseudo",
+        "package": "myorg-server",
+        "class": "\\Myorg\\Server",
+        "method": "rehash",
+        "arguments": [
+            "person_demo",
+            "person_pseudoed",
+            "title"
+        ]
+    }
+}

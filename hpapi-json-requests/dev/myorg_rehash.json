@@ -1,0 +1,23 @@
+{
+    "email" : "pseudo@myorg",
+    "password" : "password",
+    "method": {
+        "vendor": "whitelamp-pseudo",
+        "package": "pseudo-admin",
+        "class": "\\Pseudo\\Admin",
+        "method": "rehash",
+        "arguments": [
+            "8fe3cb9f-266e-11ea-94d8-00165e0004e8",
+            "person_demo",
+            "person_pseudoed",
+            "title",
+            10,
+            {
+                "Mr": 3,
+                "Ms": 1,
+                "Mrs": 1,
+                "Miss": 1
+            }
+        ]
+    }
+}
