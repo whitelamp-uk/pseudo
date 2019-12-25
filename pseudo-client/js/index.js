@@ -1,14 +1,14 @@
 
-/* Copyright 2018 Burden and Burden  http://www.burdenandburden.co.uk/ */
+/* Copyright 2019 Whitelamp  http://www.whitelamp.com/ */
 
 // Import
-import {AdminCfg} from './class/admin-cfg.js';
-import {AdminEnforcer} from './class/admin-enforcer.js';
+import {PseudoCfg} from './class/pseudo-cfg.js';
+import {PseudoEnforcer} from './class/pseudo-enforcer.js';
 
 // Executive
 function execute ( ) {
     try {
-        new AdminEnforcer (new AdminCfg()) .init ();
+        new PseudoEnforcer (new PseudoCfg()) .init ();
     }
     catch (e) {
         document.getElementById('gui-access').innerHTML = 'Failed to initialise application: '+e.message;

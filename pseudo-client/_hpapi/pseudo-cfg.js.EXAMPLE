@@ -10,7 +10,6 @@ export class PseudoCfg {
             data                    : true
         };
         this.enforceLocalStorage    = false;
-        this.environment            = "development";
         this.forceTemplateLoad      = true;
         this.history                = {
             sessionDuration         : 7200,         // seconds to flag screens

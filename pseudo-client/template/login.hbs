@@ -9,14 +9,8 @@
 
 
   <div id="gui-user">
-{{#if badge}}
-    <span class="legend">Badge number</span>
-    <input id="gui-badge" name="badgeNumber" type="text" pattern="^[0-9]{4}$" required />
-    <input id="gui-email" name="email" type="hidden" />
-{{else}}
     <span class="legend">Email</span>
     <input id="gui-email" name="email" type="email" required />
-{{/if}}
   </div>
 
   <div id="gui-auth">
