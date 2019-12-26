@@ -13,8 +13,20 @@ export class Pseudo extends Generic {
             response = await super.authenticate (
                 this.qs(document,'#gui-email').value
                ,null
-               ,'admin-server'
-               ,'\\Bab\\Admin'
+               ,'pseudo-server'
+               ,'\\Pseudo\\Server'
+            );
+            this.authCheck (response);
+        }
+        catch (e) {
+            console.log (e.message);
+        }
+        try {
+            response = await super.authenticate (
+                this.qs(document,'#gui-email').value
+               ,null
+               ,'pseudo-auth'
+               ,'\\Pseudo\\Auth'
             );
             this.authCheck (response);
         }
@@ -22,6 +34,44 @@ export class Pseudo extends Generic {
             console.log (e.message);
         }
         this.screenLockRefreshInhibit = null;
+    }
+
+    async authenticate (eml,pwd,pkg,cls) {
+        this.loginTried = 1;
+        try {
+        var request = {
+                "email" : eml
+               ,"method" : {
+                    "vendor" : "whitelamp-pesudo"
+                   ,"package" : pkg
+                   ,"class" : cls
+                   ,"method" : "authenticate"
+                   ,"arguments" : [
+                    ]
+                }
+            }
+            if (pwd) {
+                request.password = pwd;
+            }
+            if ('key' in this) {
+                request.key = this.key;
+            }
+        }
+        catch (e) {
+            console.log (e.message);
+        }
+        try {
+        var response = await this.request (request);
+        }
+        catch (e) {
+            if ('currentUser' in this) {
+                console.log ('authenticate(): clearing current user details');
+                this.currentUser = {};
+                this.data.currentUser = {};
+            }
+            throw new Error (e.message);
+        }
+        return response;
     }
 
     async authProvider (evt) {
@@ -35,7 +85,7 @@ export class Pseudo extends Generic {
             }
             evt.currentTarget.form.password.value  = '';
             email       = evt.currentTarget.form.email.value;
-            response    = await super.authenticate (
+            response    = await this.authenticate (
                 evt.currentTarget.form.email.value
                ,pwd
                ,'pseudo-server'
@@ -59,10 +109,10 @@ export class Pseudo extends Generic {
             }
             evt.currentTarget.form.password.value  = '';
             email       = evt.currentTarget.form.email.value;
-            response    = await super.authenticate (
+            response    = await this.authenticate (
                 evt.currentTarget.form.email.value
                ,pwd
-               ,'pseudo-server'
+               ,'pseudo-auth'
                ,'\\Pseudo\\Auth'
             );
             this.authCheck (response);
@@ -117,23 +167,16 @@ export class Pseudo extends Generic {
         this.parametersClear ();
         this.dataRefresh ();
         this.globalLoad ();
-        this.access.innerHTML       = this.templates.login ({badge:this.cfg.loginByBadge});
+        this.access.innerHTML       = this.templates.login ();
         unlock                      = this.qs (document,'#gui-unlock');
-        unlock.addEventListener ('click',this.authenticate.bind(this));
+        unlock.addEventListener ('click',this.authProvider.bind(this));
         // Define user scope
         userScope                   = this.userScope ();
         this.authAutoPermit         =  0;
-        if (this.cfg.loginByBadge) {
-            userScope.addEventListener ('keyup',this.badgeListen.bind(this));
-            userScope.addEventListener ('change',this.badgeListen.bind(this));
-        }
         if (this.urlUser.length>0) {
             // Passed in URL so allow instant login
             this.authAutoPermit     =  1;
             userScope.value         = this.urlUser;
-            if (this.cfg.loginByBadge) {
-                this.badgeListen (userScope);
-            }
         }
         this.saveScopeSet (userScope.value);
         userScope.addEventListener ('keyup',this.saveScopeListen.bind(this));
